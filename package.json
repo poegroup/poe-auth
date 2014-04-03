@@ -26,6 +26,7 @@
   "dependencies": {
     "consulate": "^0.1.0",
     "envs": "^0.1.4",
+    "poe-ui-kit": "^0.1.2",
     "simple-stack-common": "^0.2.3"
   }
 }

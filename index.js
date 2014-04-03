@@ -2,39 +2,23 @@
  * Module dependencies
  */
 
-var stack = require('simple-stack-common');
-var oauth = require('./lib/oauth');
+var stack = require('poe-ui-kit');
 var envs = require('envs');
-
-/**
- * Forwarding headers
- */
-
-var headers = {
-  host: 'x-orig-host',
-  path: 'x-orig-path',
-  port: 'x-orig-port',
-  proto: 'x-orig-proto'
-};
+var auth = require('./lib/auth');
 
 /**
  * Create a poe-auth server
  */
 
-module.exports = function(options) {
-  options = options || {};
+module.exports = function(opts) {
+  opts = opts || {};
 
-  var app = stack({
-    base: headers
-  });
+  var app = stack(opts);
 
-  app.set('view engine', 'jade');
+  app.auth = auth(opts);
 
-  app.useBefore('router', function locals(req, res, next) {
-    res.locals.base = req.base;
-    res.locals.site = req.get('x-ui-url') || envs('SITE_URL');
-    next();
-  });
+  app.useBefore('router', '/', 'auth', app.auth);
 
   return app;
 };
+
