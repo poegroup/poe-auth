@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-var stack = require('poe-ui-kit');
+var stack = require('poe-ui/server');
 var envs = require('envs');
 var auth = require('./lib/auth');
 
@@ -13,7 +13,7 @@ var auth = require('./lib/auth');
 module.exports = function(opts) {
   opts = opts || {};
 
-  var app = stack(opts);
+  var app = stack('/', opts);
 
   app.auth = auth(opts);
 
@@ -21,4 +21,3 @@ module.exports = function(opts) {
 
   return app;
 };
-

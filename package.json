@@ -24,9 +24,18 @@
   },
   "homepage": "https://github.com/poegroup/poe-auth",
   "dependencies": {
-    "consulate": "^0.1.0",
+    "debug": "^2.1.1",
     "envs": "^0.1.4",
-    "poe-ui-kit": "^0.1.2",
     "simple-stack-common": "^0.2.3"
+  },
+  "peerDependencies": {
+    "poe-ui": "git+https://github.com/poegroup/poe-ui.git#directiv",
+    "consulate": "^0.1.0",
+    "consulate-authcode-simple-secrets": "^0.1.0",
+    "consulate-authcode-simple-secrets-redis": "^0.1.0",
+    "consulate-scopes-env": "^0.1.0",
+    "consulate-scrypt-client": "^0.2.0",
+    "consulate-simple-secrets": "^0.1.0",
+    "consulate-validate-redirect-uri": "^0.1.0"
   }
 }
